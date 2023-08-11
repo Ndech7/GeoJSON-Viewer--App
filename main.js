@@ -12,9 +12,15 @@ L.tileLayer(
 
 //adding an event listener
 let show_geojson = () => {
+  //remove old GeoJSON
+  layers.clearLayers();
   let txt = document.getElementById("geojsontext").value;
   txt = JSON.parse(txt);
-  L.geoJSON(txt).addTo(map);
+  //Display new GeoJSON
+  L.geoJSON(txt).addTo(layers);
 };
 
 document.getElementById("submit").addEventListener("click", show_geojson);
+
+//manage different layers being added
+let layers = L.layerGroup().addTo(map);
