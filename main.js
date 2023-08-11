@@ -9,3 +9,12 @@ L.tileLayer(
     maxZoom: 19,
   }
 ).addTo(map);
+
+//adding an event listener
+let show_geojson = () => {
+  let txt = document.getElementById("geojsontext").value;
+  txt = JSON.parse(txt);
+  L.geoJSON(txt).addTo(map);
+};
+
+document.getElementById("submit").addEventListener("click", show_geojson);
